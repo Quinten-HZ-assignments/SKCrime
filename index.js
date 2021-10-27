@@ -18,8 +18,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/', express.static('static'));
 
 // API route
-app.get('/api', (req, res) => {
-    res.send('Hello World!');
+app.get('/api', async (req, res) => {
+    return res.send('Hello World!');
 });
 
 // Start webserver
