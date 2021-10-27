@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SKCrime</title>
+    <link rel="stylesheet" href="dist/Leaflet/leaflet.css" />
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+
+<body>
+    <nav>
+        <div id="title">
+            <div class="container">
+                <span class="logo">
+                    <b>SK</b><i><b>C</b>rime</i>
+                </span>
+                <span class="authorization">Login</span>
+            </div>
+        </div>
+        <ul id="menu">
+            <div class="container">
+                <li><a class="active" href="index.html">Dashboard</a></li>
+                <li><a href="map.html">Map</a></li>
+                <li><a href="about.html">About</a></li>
+            </div>
+        </ul>
+    </nav>
+
+    <main>
+        <div class="container">
+
+            <input type="text" class="search-bar" placeholder="🔎 Search here">
+
+            <div class="layout">
+
+                <div class="layout-sidebar">
+                    <div id="map"></div>
+
+                    <h2 class="sidebar-title">Time Frame:</h2>
+                    <input type="date">
+                    <span> - </span>
+                    <input type="date">
+
+                    <br><br>
+
+                    <h2 class="sidebar-title">Crime Type:</h2>
+
+                    <label class="sidebar-checkbox">
+                        <input type="checkbox">
+                        <span>Cannabis</span>
+                    </label>
+
+                    <label class="sidebar-checkbox">
+                        <input type="checkbox">
+                        <span>Cocaine</span>
+                    </label>
+
+                    <label class="sidebar-checkbox">
+                        <input type="checkbox">
+                        <span>Ecstasy</span>
+                    </label>
+
+                    <label class="sidebar-checkbox">
+                        <input type="checkbox">
+                        <span>Ketamine</span>
+                    </label>
+
+                    <label class="sidebar-checkbox">
+                        <input type="checkbox">
+                        <span>Heroin</span>
+                    </label>
+
+                    <label class="sidebar-checkbox">
+                        <input type="checkbox">
+                        <span>Other</span>
+                    </label>
+
+                    <br>
+
+                    <small>Found articles: <b>24</b> | Total articles: <b>124</b> | Last update: <b>23:11</b></small>
+                    <br>
+                    <small>Maps provided by <b><a href="http://maps.stamen.com/">Stamen</a></b></small>
+                </div>
+
+                <div class="layout-block">
+                    <div class="article" onclick="window.open('https://www.globenewswire.com/news-release/2021/10/19/2316261/0/en/Anti-obesity-Drugs-Market-Report-2021-2031.html')">
+                        <div class="article-header">
+                            <div class="article-author-icon" style="background-color: black;">NYT</div>
+                            <div class="article-author">The New York Times</div>
+                            <div class="article-date">20:46 13/10/2021</div>
+                        </div>
+
+                        <div class="article-body">
+                            <h1 class="article-title">Anti-obesity Drugs Market Report 2021-2031</h1>
+                            <p class="article-description">
+                                Investment in Research, and Innovation is very Modest, Given the Magnitude of the Obesity Problem and its Economic Consequences
+                                Investment in research, innovation, and experimentation is very modest, given the magnitude of the obesity problem and its economic consequences.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="article" onclick="window.open('https://www.proactiveinvestors.com/companies/news/963554/emyria-passes-mdma-analogue-development-milestone-with-eurofins-to-lead-extensive-compound-screening-program-963554.html')">
+                        <div class="article-header">
+                            <div class="article-author-icon">BBC</div>
+                            <div class="article-author">BBC News</div>
+                            <div class="article-date">20:46 13/10/2021</div>
+                        </div>
+
+                        <div class="article-body">
+                            <h1 class="article-title">Emyria passes MDMA analogue development milestone with Eurofins to lead extensive compound screening program</h1>
+                            <p class="article-description">
+                                “We are pleased to be working with global leader Eurofins to screen our first batch of novel MDMA-analogues after successfully completing purity and stability testing at UWA,” says MD.
+                            </p>
+                        </div>
+
+                        <div class="article-image" style="background-image: url(assets/image3.jpg)"></div>
+
+                        <div class="article-footer"></div>
+                    </div>
+
+                    <div class="article" onclick="window.open('https://www.thestkittsnevisobserver.com/mexican-grass-growers-not-happy-about-planned-canabis-legalization/#:~:text=Mexican%20Grass%3A%20Growers%20Not%20Happy%20About%20Planned%20Canabis%20Legalization,-By&text=throughout%20the%20trade.-,Growers%20expect%20the%20price%20of%20marijuana%20to%20drop%20further%20and,they%20get%20has%20been%20halved.')">
+                        <div class="article-header">
+                            <div class="article-author-icon">BBC</div>
+                            <div class="article-author">BBC News</div>
+                            <div class="article-date">20:46 13/10/2021</div>
+                        </div>
+
+                        <div class="article-body">
+                            <h1 class="article-title">Mexican Grass: Growers Not Happy About Planned Canabis Legalization</h1>
+                            <p class="article-description">
+                                Mexican legislation awaiting final Senate approval, which now may not come before September, would legalize pot production and sale for recreational use while creating a private market regulated by the government.
+                            </p>
+                        </div>
+
+                        <div class="article-image" style="background-image: url(assets/image1.jpeg)"></div>
+                        
+                        <div class="article-footer"></div>
+                    </div>
+                </div>
+
+                <div class="layout-block">
+                    <div class="article" onclick="window.open('https://eu.usatoday.com/story/news/world/2021/10/18/over-5-tons-cocaine-232-million-seized-atlantic-ocean/8512220002/')">
+                        <div class="article-header">
+                            <div class="article-author-icon" style="background-color: green;">RT</div>
+                            <div class="article-author">RT News</div>
+                            <div class="article-date">20:46 13/10/2021</div>
+                        </div>
+
+                        <div class="article-body">
+                            <h1 class="article-title">More than 5 tons of cocaine worth around $232 million seized on yacht in Atlantic Ocean</h1>
+                            <p class="article-description">
+                                Portuguese police said the shipment was one of the largest hauls in Europe in recent years and the biggest in Portugal for 15 years.
+                            </p>
+                        </div>
+
+                        <div class="article-image" style="background-image: url(assets/image2.jpg)"></div>
+
+                        <div class="article-footer"></div>
+                    </div>
+
+                    <div class="article" onclick="window.open('https://insightcrime.org/news/brazil-santa-catarina-becoming-country-mdma-hub/')">
+                        <div class="article-header">
+                            <div class="article-author-icon" style="background-color: black;">NYT</div>
+                            <div class="article-author">The New York Times</div>
+                            <div class="article-date">20:46 13/10/2021</div>
+                        </div>
+
+                        <div class="article-body">
+                            <h1 class="article-title">Brazil's Santa Catarina Becoming Country's MDMA Hub</h1>
+                            <p class="article-description">
+                                Authorities have made Brazil's largest ever-seizure of ecstasy in the southern state of Santa Catarina in the latest example of how the production of the synthetic drug is spreading rapidly in the country.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="article" onclick="window.open('https://www.theguardian.com/news/audio/2021/sep/13/ecstasy-lsd-magic-mushrooms-are-drugs-future-of-therapy')">
+                        <div class="article-header">
+                            <div class="article-author-icon">BBC</div>
+                            <div class="article-author">BBC News</div>
+                            <div class="article-date">20:46 13/10/2021</div>
+                        </div>
+
+                        <div class="article-body">
+                            <h1 class="article-title">LSD and magic mushrooms: are these drugs the future of therapy?</h1>
+                            <p class="article-description">
+                                Scientists treating depression and a range of other mental illnesses have been running controlled trials using MDMA and psychedelic drugs such as LSD, and the results have been encouraging.
+                            </p>
+                        </div>
+
+                        <div class="article-image" style="background-image: url(assets/image4.jfif)"></div>
+
+                        <div class="article-footer"></div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer>
+        Copyright © 2021 SKC Team. All rights reserved.
+    </footer>
+
+    <script src="dist/Leaflet/leaflet-src.js"></script>
+    <script src="assets/dashboard.js"></script>
+
+</body>
+
+</html>
