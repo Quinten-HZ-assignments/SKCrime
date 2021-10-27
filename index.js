@@ -19,7 +19,11 @@ app.use('/', express.static('static'));
 
 // API route
 app.get('/api', async (req, res) => {
-    return res.send('Hello World!');
+    const cookies = req.cookies;
+    const body = req.body;
+
+    const count = await db.user.count();
+    return res.send(`Cookies: ${JSON.stringify(cookies)} <br> Body: ${JSON.stringify(body)} <br> Users count: ${count}`);
 });
 
 // Start webserver
