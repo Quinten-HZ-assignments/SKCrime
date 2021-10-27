@@ -1,0 +1,23 @@
+{
+  "name": "skcrime",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kirlovon/SKCrime.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "Apache License",
+  "bugs": {
+    "url": "https://github.com/Kirlovon/SKCrime/issues"
+  },
+  "homepage": "https://github.com/Kirlovon/SKCrime#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
