@@ -1,14 +1,28 @@
-const express = require('express');
+import dotenv from 'dotenv';
+import express from 'express';
+import cookieParser from 'cookie-parser';
+import prisma from '@prisma/client';
+
+// Load config
+dotenv.config();
+
 const app = express();
-const port = 3000;
+const db = new prisma.PrismaClient()
+
+// Setup middlewares
+app.use(cookieParser());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 // Static files server
-app.use('/static', express.static(__dirname + '/static'));
+app.use('/', express.static('static'));
 
-app.get('/', (req, res) => {
+// API route
+app.get('/api', (req, res) => {
     res.send('Hello World!');
 });
 
-app.listen(port, () => {
-    console.log(`Example app listening at http://localhost:${port}`)
+// Start webserver
+app.listen(process.env.PORT, () => {
+    console.log(`Example app listening at http://localhost:${process.env.PORT}`)
 });
