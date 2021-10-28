@@ -2,7 +2,7 @@ import dotenv from 'dotenv';
 import express from 'express';
 import cookieParser from 'cookie-parser';
 import prisma from '@prisma/client';
-import Mercury from "@postlight/mercury-parser";
+import Mercury from '@postlight/mercury-parser';
 
 // Load config
 dotenv.config();
