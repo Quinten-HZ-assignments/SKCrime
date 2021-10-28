@@ -2,6 +2,7 @@ import dotenv from 'dotenv';
 import express from 'express';
 import cookieParser from 'cookie-parser';
 import prisma from '@prisma/client';
+import Mercury from "@postlight/mercury-parser";
 
 // Load config
 dotenv.config();
@@ -15,15 +16,23 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Static files server
-app.use('/', express.static('static'));
+app.use(express.static('static'));
 
 // API route
 app.get('/api', async (req, res) => {
-    const cookies = req.cookies;
-    const body = req.body;
+	const { body, cookies, query } = req;
+	const url = query?.url;
 
-    const count = await db.user.count();
-    return res.send(`Cookies: ${JSON.stringify(cookies)} <br> Body: ${JSON.stringify(body)} <br> Users count: ${count}`);
+	if (!url) {
+		return res.status(400).send('No url parameter specified');
+	}
+
+	try {
+		const result = await Mercury.parse(url, { contentType: 'html' });
+		return res.send(result.content);
+	} catch (error) {
+		return res.status(400).send('Error parsing specified url');
+	}
 });
 
 // Start webserver
