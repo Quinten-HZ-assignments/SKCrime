@@ -55,7 +55,7 @@
 
             map.addLayer(StamenToner);
 
-            const dataRequest = await fetch('dist/GeoJSON/countries.geojson');
+            const dataRequest = await fetch('/libs/GeoJSON/countries.geojson');
             const countriesData = await dataRequest.json();
 
             L.geoJson(countriesData, {onEachFeature: onEachFeature}).addTo(map);
