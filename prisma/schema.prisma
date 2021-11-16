@@ -15,3 +15,12 @@ model User {
   email String  @unique
   name  String?
 }
+
+model Article {
+  id    		Int     @id @default(autoincrement())
+  url 			String
+  title 		String
+  date 			String
+  image 		String?
+  description 	String
+}

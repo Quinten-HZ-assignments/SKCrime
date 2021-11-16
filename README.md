@@ -37,6 +37,12 @@ npx prisma studio
 
 <br>
 
+## Links
+* [Express](http://expressjs.com/en/starter/basic-routing.html) - Working with webserver.
+* [Prisma](https://www.prisma.io/docs/getting-started/quickstart) - Working with database.
+
+<br>
+
 ## Team
 
 * [Kirills Reunovs](https://github.com/Kirlovon)
