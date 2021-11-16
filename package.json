@@ -13,7 +13,7 @@
 		"url": "git+https://github.com/Kirlovon/SKCrime.git"
 	},
 	"engines": {
-		"node": "14.18.1"
+		"node": "15.4.0"
 	},
 	"keywords": [],
 	"author": "",

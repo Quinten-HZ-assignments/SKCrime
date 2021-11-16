@@ -7,7 +7,7 @@ _TODO_
 
 ## Development
 ### Setup enviroment
-You must have installed **Node.js** _(14.18.1 or above)_
+You must have installed **Node.js** _(15.4.0 or above)_
 
 Install all dependencies using this command:
 ```
