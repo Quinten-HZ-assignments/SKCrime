@@ -25,7 +25,7 @@ services:
   github:
     branch: main
     deploy_on_push: true
-    repo: Kirlovon/SKCrime
+    repo: SKC-Team11/SKCrime
   http_port: 3000
   instance_count: 1
   instance_size_slug: basic-xs

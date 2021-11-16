@@ -1,4 +1,4 @@
-![Preview](https://raw.githubusercontent.com/SKC-Team11/SKCrime/main/assets/preview.png)
+![Preview](https://raw.githubusercontent.com/SKC-Team11/SKCrime-Frontend/main/assets/preview.png)
 
 ## About
 _TODO_
