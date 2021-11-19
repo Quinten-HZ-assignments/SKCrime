@@ -9,18 +9,11 @@ const router = express.Router();
 
 // Articles
 router.get('/articles', async (req, res) => {
-	const { body, cookies, query } = req;
-	const url = query?.url;
-
-	if (!url) {
-		return res.status(400).send('No url parameter specified');
-	}
-
 	try {
-		const result = await Mercury.parse(url, { contentType: 'html' });
-		return res.send(result.content);
+		const articles = await db.article.findMany({ orderBy: { createdAt: 'desc' } });
+		return res.json(articles);
 	} catch (error) {
-		return res.status(400).send('Error parsing specified url');
+		return res.status(400).send('Error finding articles');
 	}
 });
 

@@ -27,7 +27,6 @@ const sidebar = document.querySelector('.layout-sidebar');
 window.addEventListener('scroll', () => {
     const offset = 144;
     const position = window.pageYOffset;
-    console.log(position);
 
     if (position < offset) {
         sidebar.style.marginTop = '0px';
@@ -45,12 +44,12 @@ let timer;
 function emulateReload() {
     const images = document.querySelectorAll('.article-image');
     const elements = document.querySelectorAll('.layout-block');
-    
+
     // Enable loading animation
     elements.forEach((element) => {
         element.classList.add('loading');
     });
-    
+
     // Remove old timer if its already running
     if (timer) clearTimeout(timer);
 
@@ -61,12 +60,6 @@ function emulateReload() {
             for (let i = element.children.length; i >= 0; i--) {
                 element.appendChild(element.children[Math.random() * i | 0]);
             }
-
-            // Update images
-            // images.forEach((image) => {
-            //     const randomImageID = Math.floor(Math.random() * 500);
-            //     image.style.backgroundImage = `url(https://picsum.photos/seed/${randomImageID}/600/400)`;
-            // });
 
             // Stop loading
             element.classList.remove('loading');
