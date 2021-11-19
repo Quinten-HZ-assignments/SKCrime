@@ -84,8 +84,12 @@
 					<small>Maps provided by <b><a href="http://maps.stamen.com/">Stamen</a></b></small>
 				</div>
 
-				<div class="articles-container"></div>
-				<div class="articles-container"></div>
+				<div class="articles-container">
+					<div id="articles-container-1"></div>
+				</div>
+				<div class="articles-container">
+					<div id="articles-container-2"></div>
+				</div>
 			</div>
 
 		</div>
@@ -102,95 +106,6 @@
 
 	<script>
 
-		async function init() {
-			const articles = await GET('/api/articles');
-			const containers = document.querySelectorAll('.articles-container');
-
-			// Clean containers
-			containers.forEach((container) => {
-				container.innerHTML = '';
-			});
-
-			// Create articles elements
-			let articlesElements = [];
-			articlesElements = articles.map((article) => createArticleElement(article));
-
-			// Add to the page
-			articlesElements.forEach((element) => {
-				let smallestContainer = 0;
-				let smallestContainerHeight = 0;
-
-				containers.forEach((container, index) => {
-					if (container.clientHeight > smallestContainerHeight) {
-						smallestContainer = index;
-						smallestContainerHeight = container.clientHeight;
-					}
-					console.log(container.clientHeight);
-				});
-
-				containers[smallestContainer].appendChild(element);
-			});
-		}
-
-		function createArticleElement(article) {
-			const element = document.createElement('div');
-			element.className = 'article';
-			element.onclick = () => window.open(article.url);
-
-			const header = document.createElement('div');
-			header.className = 'article-header';
-
-			if (article.publisher) {
-				if (article.publisherInitials) {
-					const authorIcon = document.createElement('div');
-					authorIcon.className = 'article-author-icon';
-					authorIcon.innerText = article.publisherInitials;
-					header.appendChild(authorIcon);
-				}
-
-				const author = document.createElement('div');
-				author.className = 'article-author';
-				author.innerText = article.publisher;
-				header.appendChild(author);
-			}
-
-			const date = document.createElement('div');
-			date.className = 'article-date';
-			date.innerText = dayjs(article.date).format('HH:mm DD/MM/YYYY');
-			header.appendChild(date);
-
-			element.appendChild(header);
-
-			const body = document.createElement('div');
-			body.className = 'article-body';
-
-			const title = document.createElement('h1');
-			title.className = 'article-title';
-			title.innerText = article.title;
-			body.appendChild(title);
-
-			const description = document.createElement('p');
-			description.className = 'article-description';
-			description.innerText = article.description;
-			body.appendChild(description);
-
-			element.appendChild(body);
-
-			if (article.image) {
-				const image = document.createElement('div');
-				image.className = 'article-image';
-				image.style.backgroundImage = `url(${article.image})`;
-				element.appendChild(image);
-
-				const footer = document.createElement('div');
-				footer.className = 'article-footer';
-				element.appendChild(footer);
-			}
-
-			return element;
-		}
-
-		init();
 	</script>
 
 </body>
