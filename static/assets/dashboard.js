@@ -72,6 +72,16 @@ async function load(search) {
 	});
 }
 
+function startLoading() {
+	const containers = document.querySelectorAll('.article-container');
+	containers.forEach(container => container.classList.add('loading'));
+}
+
+function stopLoading() {
+	const containers = document.querySelectorAll('.article-container');
+	containers.forEach(container => container.classList.remove('loading'));
+}
+
 function createArticleElement(article) {
 	const element = document.createElement('div');
 	element.className = 'article';
@@ -82,16 +92,16 @@ function createArticleElement(article) {
 
 	if (article.publisher) {
 		if (article.publisherInitials) {
-			const authorIcon = document.createElement('div');
-			authorIcon.className = 'article-author-icon';
-			authorIcon.innerText = article.publisherInitials;
-			header.appendChild(authorIcon);
+			const publisherInitials = document.createElement('div');
+			publisherInitials.className = 'article-publisher-initials';
+			publisherInitials.innerText = article.publisherInitials;
+			header.appendChild(publisherInitials);
 		}
 
-		const author = document.createElement('div');
-		author.className = 'article-author';
-		author.innerText = article.publisher;
-		header.appendChild(author);
+		const publisher = document.createElement('div');
+		publisher.className = 'article-publisher';
+		publisher.innerText = article.publisher;
+		header.appendChild(publisher);
 	}
 
 	const date = document.createElement('div');
@@ -141,15 +151,9 @@ document.querySelector('.search-bar').addEventListener('keyup', (event) => {
 
 	// Setup new timer
 	timer = setTimeout(async () => {
-		const containers = document.querySelectorAll('.article-container');
-
-		// Start loading
-		containers.forEach(container => container.classList.add('loading'));
-
+		startLoading();
 		await load(search);
-
-		// End loading
-		containers.forEach(container => container.classList.remove('loading'));
+		stopLoading();
 	}, 300);
 });
 

@@ -192,7 +192,7 @@ main {
 	flex-direction: column;
 	background-color: white;
 	box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1);
-	transition: transform 0.1s ease;
+	transition: transform 0.2s ease;
 }
 
 .article:hover {
@@ -211,7 +211,7 @@ main {
 	flex-direction: row;
 }
 
-.article-author-icon {
+.article-publisher-initials {
 	display: flex;
 	color: white;
 	align-items: center;
@@ -223,7 +223,7 @@ main {
 	background-color: red;
 }
 
-.article-author {
+.article-publisher {
 	font-weight: bold;
 	margin-left: 4px;
 	letter-spacing: -0.5px;
