@@ -11,9 +11,7 @@ async function mapInit() {
 
 	map.addLayer(StamenToner);
 
-	const dataRequest = await fetch('libs/GeoJSON/countries.geojson');
-	const contriesData = await dataRequest.json();
-
+	const contriesData = await GET('libs/GeoJSON/countries.geojson')
 	L.geoJson(contriesData).addTo(map);
 }
 
@@ -40,45 +38,57 @@ window.addEventListener('scroll', () => {
 ////////////////////////////////////////////////////
 
 async function load(search) {
-	let url = '/api/articles';
+	try {
+		let url = '/api/articles';
 
-	if (typeof search === 'string' && search.trim() !== '') {
-		url += '?' + new URLSearchParams({ search });
-	}
-
-	const articles = await GET(url);
-	const container1 = document.querySelector('#articles-container-1');
-	const container2 = document.querySelector('#articles-container-2');
-
-	// Clean containers
-	container1.innerHTML = '';
-	container2.innerHTML = '';
-
-	// If no articles
-	if (articles.length === 0) {
-		container1.innerHTML = '<i>Nothing found</i>'
-	}
-
-	// Create articles elements
-	const articlesElements = articles.map((article) => createArticleElement(article));
-
-	// Add to the page
-	articlesElements.forEach((element) => {
-		if (container1.clientHeight > container2.clientHeight) {
-			container2.appendChild(element);
-		} else {
-			container1.appendChild(element);
+		if (typeof search === 'string' && search.trim() !== '') {
+			url += '?' + new URLSearchParams({ search });
 		}
-	});
+
+		const request = await GET(url);
+		const { total, articles } = request;
+
+		const container1 = document.querySelector('#container-1');
+		const container2 = document.querySelector('#container-2');
+
+		// Clean containers
+		container1.innerHTML = '';
+		container2.innerHTML = '';
+
+		// If no articles
+		if (articles.length === 0) {
+			container1.innerHTML = '<i>Nothing found</i>';
+		}
+
+		// Create articles elements
+		const articlesElements = articles.map((article) => createArticleElement(article));
+
+		// Add to the page
+		articlesElements.forEach((element) => {
+			if (container1.clientHeight > container2.clientHeight) {
+				container2.appendChild(element);
+			} else {
+				container1.appendChild(element);
+			}
+		});
+
+		// Update
+		document.querySelector('#foundArticles').innerText = articles.length;
+		document.querySelector('#totalArticles').innerText = total;
+
+	} catch (error) {
+		const message = typeof error === 'object' ? error.message : error;
+		document.querySelector('#container-1').innerHTML = `<i style="color: red">${escapeHtml(message)}</i>`;
+	}
 }
 
 function startLoading() {
-	const containers = document.querySelectorAll('.article-container');
+	const containers = document.querySelectorAll('.articles-container');
 	containers.forEach(container => container.classList.add('loading'));
 }
 
 function stopLoading() {
-	const containers = document.querySelectorAll('.article-container');
+	const containers = document.querySelectorAll('.articles-container');
 	containers.forEach(container => container.classList.remove('loading'));
 }
 
@@ -149,10 +159,17 @@ document.querySelector('.search-bar').addEventListener('keyup', (event) => {
 	// Clear old timer
 	if (timer) clearTimeout(timer);
 
+	// Start loading
+	startLoading();
+
 	// Setup new timer
 	timer = setTimeout(async () => {
-		startLoading();
-		await load(search);
+		try {
+			await load(search);
+		} catch (error) {
+			console.error()
+		}
+
 		stopLoading();
 	}, 300);
 });
