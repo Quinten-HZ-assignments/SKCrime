@@ -21,6 +21,14 @@ npm run dev
 
 <br>
 
+### Pull database schema
+If you starting working on the database schema, its better to load actual schema from the database to your schema file. Use this command:
+```
+npx prisma db pull
+```
+
+<br>
+
 ### Push database schema
 If you changed database schema in prisma folder, you should push changes to database. You can do this using this command:
 ```
