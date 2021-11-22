@@ -317,3 +317,22 @@ main {
 		margin: 0;
 	}
 }
+
+.articlesTab {
+	margin: 0;
+	padding: 16px;
+	max-width: 400px;
+	width: 100%;
+	background-color: white;
+	color: black;
+	border-left: 7px solid #444444;
+	border-right: 7px solid #444444;
+	overflow-x: hidden;
+}
+
+.mapContainer {
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	height: 90vh;
+}

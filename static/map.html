@@ -28,7 +28,182 @@
         </ul>
     </nav>
 
-    <div id="fullMap"></div>
+    <div class="mapContainer">
+        <div id="fullMap"></div>
+    
+        <div class="articlesTab">
+            <!-- country -->
+            <div id="countryName"></div>
+            <hr>
+            <!-- articles -->
+            <script>
+                if (document.getElementById("countryName").innerText === "") {
+                    document.getElementById("countryName").innerText = "Click a country";
+                } else {
+                    // put articles in
+                }
+            </script>
+            <!-- <div>
+                <div class="article" onclick="window.open('https://www.globenewswire.com/news-release/2021/10/19/2316261/0/en/Anti-obesity-Drugs-Market-Report-2021-2031.html')">
+                    <div class="article-header">
+                        <div class="article-author-icon" style="background-color: black;">NYT</div>
+                        <div class="article-author">The New York Times</div>
+                        <div class="article-date">20:46 13/10/2021</div>
+                    </div>
+    
+                    <div class="article-body">
+                        <h1 class="article-title">Anti-obesity Drugs Market Report 2021-2031</h1>
+                        <p class="article-description">
+                            Investment in Research, and Innovation is very Modest, Given the Magnitude of the Obesity Problem and its Economic Consequences
+                            Investment in research, innovation, and experimentation is very modest, given the magnitude of the obesity problem and its economic consequences.
+                        </p>
+                    </div>
+                </div>
+    
+                <div class="article" onclick="window.open('https://www.proactiveinvestors.com/companies/news/963554/emyria-passes-mdma-analogue-development-milestone-with-eurofins-to-lead-extensive-compound-screening-program-963554.html')">
+                    <div class="article-header">
+                        <div class="article-author-icon">BBC</div>
+                        <div class="article-author">BBC News</div>
+                        <div class="article-date">20:46 13/10/2021</div>
+                    </div>
+    
+                    <div class="article-body">
+                        <h1 class="article-title">Emyria passes MDMA analogue development milestone with Eurofins to lead extensive compound screening program</h1>
+                        <p class="article-description">
+                            “We are pleased to be working with global leader Eurofins to screen our first batch of novel MDMA-analogues after successfully completing purity and stability testing at UWA,” says MD.
+                        </p>
+                    </div>
+    
+                    <div class="article-image" style="background-image: url(assets/image3.jpg)"></div>
+    
+                    <div class="article-footer"></div>
+                </div>
+    
+                <div class="article" onclick="window.open('https://www.thestkittsnevisobserver.com/mexican-grass-growers-not-happy-about-planned-canabis-legalization/#:~:text=Mexican%20Grass%3A%20Growers%20Not%20Happy%20About%20Planned%20Canabis%20Legalization,-By&text=throughout%20the%20trade.-,Growers%20expect%20the%20price%20of%20marijuana%20to%20drop%20further%20and,they%20get%20has%20been%20halved.')">
+                    <div class="article-header">
+                        <div class="article-author-icon">BBC</div>
+                        <div class="article-author">BBC News</div>
+                        <div class="article-date">20:46 13/10/2021</div>
+                    </div>
+    
+                    <div class="article-body">
+                        <h1 class="article-title">Mexican Grass: Growers Not Happy About Planned Canabis Legalization</h1>
+                        <p class="article-description">
+                            Mexican legislation awaiting final Senate approval, which now may not come before September, would legalize pot production and sale for recreational use while creating a private market regulated by the government.
+                        </p>
+                    </div>
+    
+                    <div class="article-image" style="background-image: url(assets/image1.jpeg)"></div>
+    
+                    <div class="article-footer"></div>
+                </div><div class="article" onclick="window.open('https://www.globenewswire.com/news-release/2021/10/19/2316261/0/en/Anti-obesity-Drugs-Market-Report-2021-2031.html')">
+                    <div class="article-header">
+                        <div class="article-author-icon" style="background-color: black;">NYT</div>
+                        <div class="article-author">The New York Times</div>
+                        <div class="article-date">20:46 13/10/2021</div>
+                    </div>
+    
+                    <div class="article-body">
+                        <h1 class="article-title">Anti-obesity Drugs Market Report 2021-2031</h1>
+                        <p class="article-description">
+                            Investment in Research, and Innovation is very Modest, Given the Magnitude of the Obesity Problem and its Economic Consequences
+                            Investment in research, innovation, and experimentation is very modest, given the magnitude of the obesity problem and its economic consequences.
+                        </p>
+                    </div>
+                </div>
+    
+                <div class="article" onclick="window.open('https://www.proactiveinvestors.com/companies/news/963554/emyria-passes-mdma-analogue-development-milestone-with-eurofins-to-lead-extensive-compound-screening-program-963554.html')">
+                    <div class="article-header">
+                        <div class="article-author-icon">BBC</div>
+                        <div class="article-author">BBC News</div>
+                        <div class="article-date">20:46 13/10/2021</div>
+                    </div>
+    
+                    <div class="article-body">
+                        <h1 class="article-title">Emyria passes MDMA analogue development milestone with Eurofins to lead extensive compound screening program</h1>
+                        <p class="article-description">
+                            “We are pleased to be working with global leader Eurofins to screen our first batch of novel MDMA-analogues after successfully completing purity and stability testing at UWA,” says MD.
+                        </p>
+                    </div>
+    
+                    <div class="article-image" style="background-image: url(assets/image3.jpg)"></div>
+    
+                    <div class="article-footer"></div>
+                </div>
+    
+                <div class="article" onclick="window.open('https://www.thestkittsnevisobserver.com/mexican-grass-growers-not-happy-about-planned-canabis-legalization/#:~:text=Mexican%20Grass%3A%20Growers%20Not%20Happy%20About%20Planned%20Canabis%20Legalization,-By&text=throughout%20the%20trade.-,Growers%20expect%20the%20price%20of%20marijuana%20to%20drop%20further%20and,they%20get%20has%20been%20halved.')">
+                    <div class="article-header">
+                        <div class="article-author-icon">BBC</div>
+                        <div class="article-author">BBC News</div>
+                        <div class="article-date">20:46 13/10/2021</div>
+                    </div>
+    
+                    <div class="article-body">
+                        <h1 class="article-title">Mexican Grass: Growers Not Happy About Planned Canabis Legalization</h1>
+                        <p class="article-description">
+                            Mexican legislation awaiting final Senate approval, which now may not come before September, would legalize pot production and sale for recreational use while creating a private market regulated by the government.
+                        </p>
+                    </div>
+    
+                    <div class="article-image" style="background-image: url(assets/image1.jpeg)"></div>
+    
+                    <div class="article-footer"></div>
+                </div><div class="article" onclick="window.open('https://www.globenewswire.com/news-release/2021/10/19/2316261/0/en/Anti-obesity-Drugs-Market-Report-2021-2031.html')">
+                    <div class="article-header">
+                        <div class="article-author-icon" style="background-color: black;">NYT</div>
+                        <div class="article-author">The New York Times</div>
+                        <div class="article-date">20:46 13/10/2021</div>
+                    </div>
+    
+                    <div class="article-body">
+                        <h1 class="article-title">Anti-obesity Drugs Market Report 2021-2031</h1>
+                        <p class="article-description">
+                            Investment in Research, and Innovation is very Modest, Given the Magnitude of the Obesity Problem and its Economic Consequences
+                            Investment in research, innovation, and experimentation is very modest, given the magnitude of the obesity problem and its economic consequences.
+                        </p>
+                    </div>
+                </div>
+    
+                <div class="article" onclick="window.open('https://www.proactiveinvestors.com/companies/news/963554/emyria-passes-mdma-analogue-development-milestone-with-eurofins-to-lead-extensive-compound-screening-program-963554.html')">
+                    <div class="article-header">
+                        <div class="article-author-icon">BBC</div>
+                        <div class="article-author">BBC News</div>
+                        <div class="article-date">20:46 13/10/2021</div>
+                    </div>
+    
+                    <div class="article-body">
+                        <h1 class="article-title">Emyria passes MDMA analogue development milestone with Eurofins to lead extensive compound screening program</h1>
+                        <p class="article-description">
+                            “We are pleased to be working with global leader Eurofins to screen our first batch of novel MDMA-analogues after successfully completing purity and stability testing at UWA,” says MD.
+                        </p>
+                    </div>
+    
+                    <div class="article-image" style="background-image: url(assets/image3.jpg)"></div>
+    
+                    <div class="article-footer"></div>
+                </div>
+    
+                <div class="article" onclick="window.open('https://www.thestkittsnevisobserver.com/mexican-grass-growers-not-happy-about-planned-canabis-legalization/#:~:text=Mexican%20Grass%3A%20Growers%20Not%20Happy%20About%20Planned%20Canabis%20Legalization,-By&text=throughout%20the%20trade.-,Growers%20expect%20the%20price%20of%20marijuana%20to%20drop%20further%20and,they%20get%20has%20been%20halved.')">
+                    <div class="article-header">
+                        <div class="article-author-icon">BBC</div>
+                        <div class="article-author">BBC News</div>
+                        <div class="article-date">20:46 13/10/2021</div>
+                    </div>
+    
+                    <div class="article-body">
+                        <h1 class="article-title">Mexican Grass: Growers Not Happy About Planned Canabis Legalization</h1>
+                        <p class="article-description">
+                            Mexican legislation awaiting final Senate approval, which now may not come before September, would legalize pot production and sale for recreational use while creating a private market regulated by the government.
+                        </p>
+                    </div>
+    
+                    <div class="article-image" style="background-image: url(assets/image1.jpeg)"></div>
+    
+                    <div class="article-footer"></div>
+                </div>
+            </div> -->
+        </div>
+    </div>
 
     <footer>
         Copyright © 2021 SKC Team. All rights reserved.
@@ -69,6 +244,11 @@
                 click: (event)=>{
                     console.log(event.latlng);
                     console.log(feature);
+                    
+                    // articles tab
+                    document.getElementById("countryName").innerText = feature.properties.ADMIN;
+                    
+                    // popup
                     let popup = L.popup()
                     .setLatLng([event.latlng.lat, event.latlng.lng])
                     .setContent(`Country: <b>${feature.properties.ADMIN}</b><br>Crime rate: <b>3.17</b>`)
