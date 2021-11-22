@@ -1,6 +1,21 @@
 const api = 'https://stamen-tiles-{s}.a.ssl.fastly.net/toner/{z}/{x}/{y}.{ext}';
 const map = L.map('map').setView([37.8, -96], 4);
 
+const database = [
+    {
+        title: "cocaine",
+        key_words: ["crime", "drug", "cocaine"]
+    },
+    {
+        title: "weed",
+        key_words: ["crime", "drug", "weed"]
+    },
+    {
+        title: "LSD",
+        key_words: ["crime", "drug", "LSD"]
+    }
+];
+
 async function mapInit() {
     const StamenToner = L.tileLayer(api, {
         attribution: '',
@@ -82,4 +97,25 @@ document.querySelectorAll('.sidebar-checkbox').forEach(checkbox => {
 // Reload on search
 document.querySelector('.search-bar').addEventListener('keyup', () => {
     emulateReload();
+    getSearchValue();
 });
+
+
+
+function getSearchValue () {
+    const searchValue = document.querySelector(".search-bar").value;
+
+    for(let i=0; i<database.length; i++){
+        if(database[i].title == searchValue){
+            console.log(searchValue)
+        } 
+        for (let z=0; z<database[i].key_words.length; z++){
+            if (database[i].key_words[z] == searchValue){
+                console.log(searchValue)
+            }
+        }
+    }
+
+    
+}
+
