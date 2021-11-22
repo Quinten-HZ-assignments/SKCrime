@@ -1,15 +1,14 @@
 import dotenv from 'dotenv';
 import express from 'express';
 import cookieParser from 'cookie-parser';
-import prisma from '@prisma/client';
 
 // Load config
 dotenv.config();
 
+// Load controllers
 import apiController from './app/api.js';
 
 const app = express();
-const db = new prisma.PrismaClient()
 
 // Setup middlewares
 app.use(cookieParser());

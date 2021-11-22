@@ -2,16 +2,33 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
-  provider = "prisma-client-js"
+    provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+    provider = "postgresql"
+    url      = env("DATABASE_URL")
 }
 
 model User {
-  id    Int     @id @default(autoincrement())
-  email String  @unique
-  name  String?
+    id          Int      @id @default(autoincrement())
+    token       String   @unique
+    username    String   @unique
+    password    String
+    permissions String[]
+}
+
+model Article {
+    id                Int      @id @default(autoincrement())
+    createdAt         DateTime @default(now())
+    date              DateTime @default(now())
+    url               String   @unique
+    title             String
+    description       String
+    content           String?
+    country           String?
+    publisher         String?
+    publisherInitials String?
+    image             String?
+    keywords          String[]
 }
