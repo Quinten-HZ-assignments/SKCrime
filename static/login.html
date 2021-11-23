@@ -29,56 +29,93 @@
 			<div class="container">
 				<div class="wrapper fadeInDown">
 					<div id="formContent">
-					  <!-- Tabs Titles -->
-					  <h2 class="active"> Sign In </h2>
-					  <h2 class="inactive underlineHover">Sign Up </h2>
-				  
-					  <!-- Icon -->
-					  <div class="fadeIn first">
-						<img src="/assets/usericon.png" />
-					  </div>
-				  
-					  <!-- Login Form -->
-					  <form id="form">
-						<input type="text" id="login" class="fadeIn second" name="login" placeholder="login">
-						<input type="text" id="password" class="fadeIn third" name="login" placeholder="password">
-						<input type="submit" class="fadeIn fourth" value="Log In">
-					  </form>
-				  
-					  <!-- Remind Password -->
-					  <div id="formFooter">
-						<a class="underlineHover" href="#">Forgot Password?</a>
-					  </div>
-				  
+						<!-- Tabs Titles -->
+						<h2 class="active">Sign In</h2>
+						<h2 class="inactive underlineHover">Sign Up</h2>
+
+						<!-- Icon -->
+						<div class="fadeIn first">
+							<img src="/assets/usericon.png" />
+						</div>
+
+						<!-- Login Form -->
+						<form id="form">
+							<input
+								type="text"
+								id="login"
+								class="fadeIn second"
+								name="login"
+								placeholder="login"
+							/>
+							<!-- Error message when user attempts invalid login -->
+							<h5 id="invalidUserName"></h5>
+
+							<input
+								type="text"
+								id="password"
+								class="fadeIn third"
+								name="login"
+								placeholder="password"
+							/>
+							<input
+								type="submit"
+								class="fadeIn fourth"
+								value="Log In"
+							/>
+						</form>
+
+						<!-- Remind Password -->
+						<div id="formFooter">
+							<a class="underlineHover" href="#"
+								>Forgot Password?</a
+							>
+						</div>
 					</div>
-				  </div>
+				</div>
 			</div>
 		</main>
 		<script src="/assets/utils.js"></script>
-		<script>document.getElementById('form').addEventListener('submit', async (event) => {
-			event.preventDefault();
+		<script src="/libs/JSCookie/js.cookie.min.js"></script>
+		<!-- <script src="/app/api.js"></script> -->
 
-			const username = document.getElementById('login').value
-			const password = document.getElementById('password').value
+		<script>
+			document
+				.getElementById("form")
+				.addEventListener("submit", async (event) => {
+					event.preventDefault();
 
-			console.log(username, password)
+					const username = document.getElementById("login").value;
+					const password = document.getElementById("password").value;
 
-			const request = await POST('/api/login', {
-				username: document.getElementById('login').value,
-				password: document.getElementById('password').value
-			});
+					console.log(username, password);
 
-			console.log(request);
+					const request = await POST("/api/login", {
+						username: document.getElementById("login").value,
+						password: document.getElementById("password").value,
+					});
 
-			if(request.succes == false) {
-			
-			}
+					console.log(request);
 
-			if(request.succes) {
-				
-			}
-		})
+					if (request.success == false) {
+						let invalidUserName =
+							document.getElementById("invalidUserName");
 
+						//Error prevention/if user logs with invalid user-name
+						let invalidUserNameMessage =
+							"Sorry, these login details are invalid.";
+
+						invalidUserName.append(invalidUserNameMessage);
+
+						console.log("invalid username.");
+					}
+
+					if (request.success == true) {
+						console.log("Successful login");
+
+						//Redirect to homepage after user has logged in
+						window.location.href = "/";
+					}
+				});
 		</script>
 
 		<footer>Copyright © 2021 SKC Team. All rights reserved.</footer>

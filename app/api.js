@@ -74,7 +74,7 @@ router.post('/login', async (req, res) => {
 
 		// If not found
 		if (!user) return res.status(400).json({
-			succes : false,
+			success : false,
 			message: 'user not found'
 		});
 
@@ -88,14 +88,14 @@ router.post('/login', async (req, res) => {
 		});
 
 		return res.cookie('token', token, { maxAge: 999999 }).json({
-			succes: true,
+			success: true,
 			token: token
 		});
 
 	} catch (error) {
 		console.log(error);
 		return res.status(400).json({
-			succes : false,
+			success : false,
 			message: 'server error'
 		});
 	}
