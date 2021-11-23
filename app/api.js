@@ -1,5 +1,5 @@
 import { nanoid } from 'nanoid';
-import express from 'express';
+import express, { request } from 'express';
 import prisma from '@prisma/client';
 import Mercury from '@postlight/mercury-parser';
 
@@ -10,6 +10,19 @@ const db = new prisma.PrismaClient();
 
 // Setup router
 const router = express.Router();
+
+// Login
+router.get('/private', Auth);
+
+router.get('/private', async (req, res) => {
+	const { search, country } = req.query;
+
+	if(req.user) {
+		return res.send('u are user')
+	}
+	
+	return res.send('hello u are not a user!')
+});
 
 // Articles
 router.get('/articles', async (req, res) => {
@@ -51,6 +64,8 @@ router.post('/login', async (req, res) => {
 	const { body } = req;
 	const { username, password } = body;
 
+	console.log(username, password)
+
 	try {
 		// Find user by username and password
 		const user = await db.user.findFirst({
@@ -58,7 +73,10 @@ router.post('/login', async (req, res) => {
 		});
 
 		// If not found
-		if (!user) return res.status(400).send('Invalid user or password');
+		if (!user) return res.status(400).json({
+			succes : false,
+			message: 'user not found'
+		});
 
 		// Generate token
 		const token = nanoid();
@@ -69,11 +87,17 @@ router.post('/login', async (req, res) => {
 			data: { token }
 		});
 
-		return res.cookie('token', token, { maxAge: 999999 }).send(token);
+		return res.cookie('token', token, { maxAge: 999999 }).json({
+			succes: true,
+			token: token
+		});
 
 	} catch (error) {
 		console.log(error);
-		return res.status(400).send('Error logging in');
+		return res.status(400).json({
+			succes : false,
+			message: 'server error'
+		});
 	}
 });
 

@@ -18,6 +18,7 @@ async function GET(url) {
 async function POST(url, body) {
 	const request = {
 		method: 'POST',
+		headers: {'Content-Type': 'application/json'},
 		body: body ? JSON.stringify(body) : undefined,
 	};
 
