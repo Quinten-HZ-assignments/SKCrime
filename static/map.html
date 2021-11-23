@@ -1,84 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link
+			rel="stylesheet"
+			type="text/css"
+			href="/libs/Leaflet/leaflet.css"
+		/>
+		<link rel="stylesheet" type="text/css" href="/assets/style.css" />
+		<title>SKCrime</title>
+	</head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="/libs/Leaflet/leaflet.css" />
-    <link rel="stylesheet" type="text/css" href="/assets/style.css">
-    <title>SKCrime</title>
-</head>
+	<body>
+		<nav>
+			<div id="title">
+				<div class="container">
+					<span class="logo">
+						<b>SK</b><i><b>C</b>rime</i>
+					</span>
+					<span class="authorization"
+						><a href="login.html" style="color: white"
+							>Login</a
+						></span
+					>
+				</div>
+			</div>
+			<ul id="menu">
+				<div class="container">
+					<li><a href="index.html">Dashboard</a></li>
+					<li><a class="active" href="map.html">Map</a></li>
+					<li><a href="about.html">About</a></li>
+				</div>
+			</ul>
+		</nav>
 
-<body>
-    <nav>
-        <div id="title">
-            <div class="container">
-                <span class="logo">
-                    <b>SK</b><i><b>C</b>rime</i>
-                </span>
-                <span class="authorization">Login</span>
-            </div>
-        </div>
-        <ul id="menu">
-            <div class="container">
-                <li><a href="index.html">Dashboard</a></li>
-                <li><a class="active" href="map.html">Map</a></li>
-                <li><a href="about.html">About</a></li>
-            </div>
-        </ul>
-    </nav>
+		<div id="fullMap"></div>
 
-    <div id="fullMap"></div>
+		<footer>Copyright © 2021 SKC Team. All rights reserved.</footer>
 
-    <footer>
-        Copyright © 2021 SKC Team. All rights reserved.
-    </footer>
+		<script src="/libs/Leaflet/leaflet-src.js"></script>
 
-    <script src="/libs/Leaflet/leaflet-src.js"></script>
+		<script>
+			const api =
+				"https://stamen-tiles-{s}.a.ssl.fastly.net/toner/{z}/{x}/{y}.{ext}";
+			const map = L.map("fullMap").setView([37.8, -96], 4);
+			map.setMaxBounds([
+				[-180, 180],
+				[180, -180],
+			]);
 
-    <script>
-        const api = 'https://stamen-tiles-{s}.a.ssl.fastly.net/toner/{z}/{x}/{y}.{ext}';
-        const map = L.map('fullMap').setView([37.8, -96], 4);
-        map.setMaxBounds([
-            [-180, 180],
-            [180, -180]
-        ]);
+			async function init() {
+				const StamenToner = L.tileLayer(api, {
+					attribution:
+						'Map tiles by <a href="http://stamen.com">Stamen Design</a>',
+					minZoom: 3,
+					maxZoom: 20,
+					ext: "png",
+					noWrap: true,
+				});
 
-        async function init() {
-            const StamenToner = L.tileLayer(api, {
-                attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>',
-                minZoom: 3,
-                maxZoom: 20,
-                ext: 'png',
-                noWrap: true
-            });
+				map.addLayer(StamenToner);
 
-            map.addLayer(StamenToner);
+				const dataRequest = await fetch(
+					"/libs/GeoJSON/countries.geojson"
+				);
+				const countriesData = await dataRequest.json();
 
-            const dataRequest = await fetch('/libs/GeoJSON/countries.geojson');
-            const countriesData = await dataRequest.json();
+				L.geoJson(countriesData, {
+					onEachFeature: onEachFeature,
+				}).addTo(map);
+			}
 
-            L.geoJson(countriesData, {onEachFeature: onEachFeature}).addTo(map);
-        }
+			init();
 
-        init();
-
-        function onEachFeature(feature, layer) {
-            //bind click
-            layer.on({
-                click: (event)=>{
-                    console.log(event.latlng);
-                    console.log(feature);
-                    let popup = L.popup()
-                    .setLatLng([event.latlng.lat, event.latlng.lng])
-                    .setContent(`Country: <b>${feature.properties.ADMIN}</b><br>Crime rate: <b>3.17</b>`)
-                    .openOn(map);
-                }
-            });
-        }
-
-
-    </script>
-</body>
-
+			function onEachFeature(feature, layer) {
+				//bind click
+				layer.on({
+					click: (event) => {
+						console.log(event.latlng);
+						console.log(feature);
+						let popup = L.popup()
+							.setLatLng([event.latlng.lat, event.latlng.lng])
+							.setContent(
+								`Country: <b>${feature.properties.ADMIN}</b><br>Crime rate: <b>3.17</b>`
+							)
+							.openOn(map);
+					},
+				});
+			}
+		</script>
+	</body>
 </html>
