@@ -10,7 +10,7 @@ body {
 	color: white;
 	overflow-x: hidden;
 	background-color: black;
-	font-family: 'Segoe UI', Tahoma;
+	font-family: "Segoe UI", Tahoma;
 }
 
 nav {
@@ -70,7 +70,7 @@ footer {
 	padding: 8px 16px;
 	text-align: center;
 	text-decoration: none;
-	font-family: 'Courier New', Courier, monospace;
+	font-family: "Courier New", Courier, monospace;
 }
 
 #menu li a:hover {
@@ -214,26 +214,15 @@ main {
 	font-size: 13px;
 	padding-bottom: 0;
 	white-space: nowrap;
-	margin-bottom: 12px;
+	margin-bottom: 4px;
 	flex-direction: row;
 }
 
-.article-publisher-initials {
-	display: flex;
-	color: white;
-	align-items: center;
-	padding: 0 4px;
-	font-size: 10px;
-	overflow: hidden;
-	font-weight: bold;
-	border-radius: 4px;
-	background-color: #686868;
-}
-
 .article-publisher {
+	opacity: 0.5;
 	font-weight: bold;
-	margin-left: 4px;
 	letter-spacing: -0.5px;
+	text-transform: capitalize;
 }
 
 .article-date {
@@ -257,7 +246,7 @@ main {
 }
 
 .article-image {
-	height: 200px;
+	height: 180px;
 	width: 100%;
 	padding: 0 -16px;
 	background-size: cover;
@@ -304,7 +293,6 @@ main {
 }
 
 @media screen and (max-width: 900px) {
-
 	main {
 		padding: 16px 8px;
 	}

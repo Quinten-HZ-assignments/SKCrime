@@ -23,7 +23,7 @@ export default async function auth(req, res, next) {
 
 	// If invalid token
 	if (!user) {
-		return res.clearCookie('token').status(400).send('Invalid token, removed from your cookies');
+		return res.clearCookie('token');
 	}
 
 	// Make user global

@@ -23,7 +23,7 @@ const sidebar = document.querySelector('.layout-sidebar');
 
 // Fix sidebar
 window.addEventListener('scroll', () => {
-	const offset = 144;
+	const offset = 136;
 	const position = window.pageYOffset;
 
 	if (position < offset) {
@@ -100,19 +100,10 @@ function createArticleElement(article) {
 	const header = document.createElement('div');
 	header.className = 'article-header';
 
-	if (article.publisher) {
-		if (article.publisherInitials) {
-			const publisherInitials = document.createElement('div');
-			publisherInitials.className = 'article-publisher-initials';
-			publisherInitials.innerText = article.publisherInitials;
-			header.appendChild(publisherInitials);
-		}
-
-		const publisher = document.createElement('div');
-		publisher.className = 'article-publisher';
-		publisher.innerText = article.publisher;
-		header.appendChild(publisher);
-	}
+	const publisher = document.createElement('div');
+	publisher.className = 'article-publisher';
+	publisher.innerText = article.publisher;
+	header.appendChild(publisher);
 
 	const date = document.createElement('div');
 	date.className = 'article-date';
