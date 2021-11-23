@@ -5,8 +5,9 @@ name: GitHubActions SKCrime
 
 on:
   push:
-    branches: -dev -main
-
+    branches: 
+        - dev 
+        - main
 jobs:
   build:
 
