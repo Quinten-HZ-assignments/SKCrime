@@ -7,7 +7,7 @@
 	"scripts": {
 		"start": "node index.js",
 		"dev": "nodemon index.js",
-		"test": "echo 'hello there'"
+		"test": "jest"
 	},
 	"repository": {
 		"type": "git",
@@ -33,6 +33,7 @@
 	},
 	"devDependencies": {
 		"@types/express": "^4.17.13",
+		"jest": "^27.4.5",
 		"nodemon": "^2.0.14",
 		"prisma": "^3.3.0"
 	}
