@@ -22,6 +22,6 @@ app.use(express.static('static'));
 app.use('/api', apiController);
 
 // Start webserver
-app.listen(process.env.PORT, () => {
+ app.listen(process.env.PORT, () => {
     console.log(`Example app listening at http://localhost:${process.env.PORT}`)
 });
