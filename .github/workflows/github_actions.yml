@@ -4,13 +4,8 @@
 name: GitHubActions SKCrime
 
 on:
-  push:
-    branches: 
-        - dev 
-        - main
-  pull_request:
-    branches: 
-        -dev
+ schedule:
+    - cron: "*/5 * * * *"
 jobs:
   build:
 
